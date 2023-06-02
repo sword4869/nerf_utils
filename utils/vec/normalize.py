@@ -1,6 +1,6 @@
 import numpy as np
 
-def normalize_vec(x):
+def normalize_vec(x:np.ndarry):
     '''
     向量的单位化: 向量除以自己的二范数，得到和这个向量方向相同的单位向量(向量的范数为1)。
     '''

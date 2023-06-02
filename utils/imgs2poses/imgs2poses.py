@@ -9,7 +9,7 @@ parser.add_argument('--match_type', type=str,
 					exhaustive_matcher sequential_matcher.  Other matchers not supported at this time')
 # 实际上是`path/to/project/`, your images are located in `path/to/project/images`
 parser.add_argument('-d', '--data_dir', type=str, help='input scene directory')
-parser.add_argument('-f', '--factor', type=int, default=4, help='minify factor, downsample factor for images')
+parser.add_argument('-f', '--factor', type=int, default=1, help='minify factor, downsample factor for images')
 args = parser.parse_args()
 
 if args.match_type != 'exhaustive_matcher' and args.match_type != 'sequential_matcher':

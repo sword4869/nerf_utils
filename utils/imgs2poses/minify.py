@@ -1,3 +1,7 @@
+'''
+factor=[1], 也会生成`images_1`文件夹
+'''
+
 import os
 from subprocess import check_output
 import numpy as np
