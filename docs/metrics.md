@@ -89,7 +89,8 @@ def psnr(p0, p1, data_range=255.):
 ```python
 # [0.0, 1.0]
 img2mse = lambda x, y : torch.mean((x - y) ** 2)
-mse2psnr = lambda x : -10. * torch.log(x) / torch.log(torch.Tensor([10.]))
+# mse2psnr = lambda x : -10. * torch.log(x) / torch.log(torch.Tensor([10.]))
+mse2psnr = lambda x : 10. * torch.log10(1.0 / x)
 
 mse2psnr(img2mse(p0, p1))
 ```
@@ -178,10 +179,6 @@ cv2.waitKey(0)
 ```
 可以看出用灰度图框选不太准（毕竟三通道融合了）
 
-![图 1](../images/afb0979a3e2dcb1ba25d47b3a9aa4091e0263e9e27362af90d7e96c13733ea6b.png)  
-
-![图 2](../images/19c554721e99be8a979ac91ac364dafacf4716109b33e7a28a4138e4a49faa89.png)  
-
 ## 3. lpips
 - `torchmetrics.image.lpip.LearnedPerceptualImagePatchSimilarity`就是在调用`lpips.LPIPS`，所以`normalize=True`的特性是一样的。
 - `torchmetrics.image.lpip.LearnedPerceptualImagePatchSimilarity`是对一个batch（即N)，求得一个整体平均的lpips。
@@ -221,4 +218,5 @@ print(l2.squeeze())
 # tensor([0.3497, 0.3494, 0.3473, 0.3558, 0.3437, 0.3366, 0.3716, 0.3516, 0.3472,
 #         0.3413], grad_fn=<SqueezeBackward0>)
 print(l2.mean())
+# tensor(0.3494, grad_fn=<SqueezeBackward0>)
 ```
